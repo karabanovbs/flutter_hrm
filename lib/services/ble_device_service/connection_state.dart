@@ -1,0 +1,4 @@
+enum DeviceConnectionState {
+  connected,
+  disconnected,
+}

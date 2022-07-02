@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "302436165721",
+    "project_id": "flutterhrm",
+    "storage_bucket": "flutterhrm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:302436165721:android:c9f9830f5f0052e4262948",
+        "android_client_info": {
+          "package_name": "com.example.flutter_hrm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "302436165721-vhikvp68k62h7ka1u6mcr1daabul3rha.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpXzYYObSlt3NDDnrxArG3HdxlaN8GjPg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "302436165721-vhikvp68k62h7ka1u6mcr1daabul3rha.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
