@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$TrainingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reload,
     required TResult Function() start,
     required TResult Function() stop,
     required TResult Function(TrainingPoint position) geoUpdate,
@@ -26,6 +27,7 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -34,6 +36,7 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -43,6 +46,7 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
     required TResult Function(_TrainingStartEvent value) start,
     required TResult Function(_TrainingStopEvent value) stop,
     required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
@@ -51,6 +55,7 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -59,6 +64,7 @@ mixin _$TrainingEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -83,6 +89,129 @@ class _$TrainingEventCopyWithImpl<$Res>
   final TrainingEvent _value;
   // ignore: unused_field
   final $Res Function(TrainingEvent) _then;
+}
+
+/// @nodoc
+abstract class _$$_TrainingReloadEventCopyWith<$Res> {
+  factory _$$_TrainingReloadEventCopyWith(_$_TrainingReloadEvent value,
+          $Res Function(_$_TrainingReloadEvent) then) =
+      __$$_TrainingReloadEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_TrainingReloadEventCopyWithImpl<$Res>
+    extends _$TrainingEventCopyWithImpl<$Res>
+    implements _$$_TrainingReloadEventCopyWith<$Res> {
+  __$$_TrainingReloadEventCopyWithImpl(_$_TrainingReloadEvent _value,
+      $Res Function(_$_TrainingReloadEvent) _then)
+      : super(_value, (v) => _then(v as _$_TrainingReloadEvent));
+
+  @override
+  _$_TrainingReloadEvent get _value => super._value as _$_TrainingReloadEvent;
+}
+
+/// @nodoc
+
+class _$_TrainingReloadEvent implements _TrainingReloadEvent {
+  const _$_TrainingReloadEvent();
+
+  @override
+  String toString() {
+    return 'TrainingEvent.reload()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_TrainingReloadEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() reload,
+    required TResult Function() start,
+    required TResult Function() stop,
+    required TResult Function(TrainingPoint position) geoUpdate,
+    required TResult Function(double hr) hrUpdate,
+  }) {
+    return reload();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
+    TResult Function()? start,
+    TResult Function()? stop,
+    TResult Function(TrainingPoint position)? geoUpdate,
+    TResult Function(double hr)? hrUpdate,
+  }) {
+    return reload?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
+    TResult Function()? start,
+    TResult Function()? stop,
+    TResult Function(TrainingPoint position)? geoUpdate,
+    TResult Function(double hr)? hrUpdate,
+    required TResult orElse(),
+  }) {
+    if (reload != null) {
+      return reload();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
+    required TResult Function(_TrainingStartEvent value) start,
+    required TResult Function(_TrainingStopEvent value) stop,
+    required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
+    required TResult Function(_TrainingHrUpdateEvent value) hrUpdate,
+  }) {
+    return reload(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
+    TResult Function(_TrainingStartEvent value)? start,
+    TResult Function(_TrainingStopEvent value)? stop,
+    TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
+    TResult Function(_TrainingHrUpdateEvent value)? hrUpdate,
+  }) {
+    return reload?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
+    TResult Function(_TrainingStartEvent value)? start,
+    TResult Function(_TrainingStopEvent value)? stop,
+    TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
+    TResult Function(_TrainingHrUpdateEvent value)? hrUpdate,
+    required TResult orElse(),
+  }) {
+    if (reload != null) {
+      return reload(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TrainingReloadEvent implements TrainingEvent {
+  const factory _TrainingReloadEvent() = _$_TrainingReloadEvent;
 }
 
 /// @nodoc
@@ -126,6 +255,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reload,
     required TResult Function() start,
     required TResult Function() stop,
     required TResult Function(TrainingPoint position) geoUpdate,
@@ -137,6 +267,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -148,6 +279,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -163,6 +295,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
     required TResult Function(_TrainingStartEvent value) start,
     required TResult Function(_TrainingStopEvent value) stop,
     required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
@@ -174,6 +307,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -185,6 +319,7 @@ class _$_TrainingStartEvent implements _TrainingStartEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -243,6 +378,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reload,
     required TResult Function() start,
     required TResult Function() stop,
     required TResult Function(TrainingPoint position) geoUpdate,
@@ -254,6 +390,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -265,6 +402,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -280,6 +418,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
     required TResult Function(_TrainingStartEvent value) start,
     required TResult Function(_TrainingStopEvent value) stop,
     required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
@@ -291,6 +430,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -302,6 +442,7 @@ class _$_TrainingStopEvent implements _TrainingStopEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -395,6 +536,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reload,
     required TResult Function() start,
     required TResult Function() stop,
     required TResult Function(TrainingPoint position) geoUpdate,
@@ -406,6 +548,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -417,6 +560,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -432,6 +576,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
     required TResult Function(_TrainingStartEvent value) start,
     required TResult Function(_TrainingStopEvent value) stop,
     required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
@@ -443,6 +588,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -454,6 +600,7 @@ class _$_TrainingGeoUpdateEvent implements _TrainingGeoUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -544,6 +691,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() reload,
     required TResult Function() start,
     required TResult Function() stop,
     required TResult Function(TrainingPoint position) geoUpdate,
@@ -555,6 +703,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -566,6 +715,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? reload,
     TResult Function()? start,
     TResult Function()? stop,
     TResult Function(TrainingPoint position)? geoUpdate,
@@ -581,6 +731,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_TrainingReloadEvent value) reload,
     required TResult Function(_TrainingStartEvent value) start,
     required TResult Function(_TrainingStopEvent value) stop,
     required TResult Function(_TrainingGeoUpdateEvent value) geoUpdate,
@@ -592,6 +743,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,
@@ -603,6 +755,7 @@ class _$_TrainingHrUpdateEvent implements _TrainingHrUpdateEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_TrainingReloadEvent value)? reload,
     TResult Function(_TrainingStartEvent value)? start,
     TResult Function(_TrainingStopEvent value)? stop,
     TResult Function(_TrainingGeoUpdateEvent value)? geoUpdate,

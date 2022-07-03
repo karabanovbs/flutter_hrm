@@ -2,9 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_hrm/domain/hr_point.dart';
 import 'package:flutter_hrm/domain/training.dart';
 import 'package:flutter_hrm/domain/training_point.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+const _lastTrainingIdKey = 'lastTrainingIdKey';
 
 class TrainingRepository {
   late final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  late final _prefs = SharedPreferences.getInstance();
 
   late final _training =
       _firestore.collection(Training.collection).withConverter<Training>(
@@ -45,6 +49,14 @@ class TrainingRepository {
 
   TrainingRepository();
 
+  Future<Training?> getLastTraining() async {
+    final id = (await _prefs).getString(_lastTrainingIdKey);
+    if (id != null) {
+      return getById(id);
+    }
+    return null;
+  }
+
   Future<Training> createTraining() async {
     final trainingDocumentRef = await _training.add(
       Training(
@@ -54,13 +66,14 @@ class TrainingRepository {
 
     final trainingDocument = await trainingDocumentRef.get();
 
+    (await _prefs).setString(_lastTrainingIdKey, trainingDocument.id);
     return ArgumentError.checkNotNull(trainingDocument.data());
   }
 
-  Future<Training> readById(String? id) async {
+  Future<Training?> getById(String? id) async {
     final trainingDocument = await _training.doc(id).get();
 
-    return ArgumentError.checkNotNull(trainingDocument.data());
+    return trainingDocument.data();
   }
 
   Future<void> save(Training training) async {
@@ -69,7 +82,8 @@ class TrainingRepository {
 
   Future<Training> stopTraining(Training training) async {
     await save(training.copyWith(finished: DateTime.now().toUtc()));
-    return readById(training.id);
+    (await _prefs).remove(_lastTrainingIdKey);
+    return ArgumentError.checkNotNull(await getById(training.id));
   }
 
   Future<TrainingPoint> addPoint(Training training, TrainingPoint point) async {

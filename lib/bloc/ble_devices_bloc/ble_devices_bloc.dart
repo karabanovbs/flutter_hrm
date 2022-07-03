@@ -62,14 +62,7 @@ class BleDevicesBloc extends StreamBloc<BleDevicesEvent, BleDevicesState>
             );
 
             connectionStateSubscription = RetryWhenStream(
-              () => _bleDeviceService.connect(event.device).timeout(
-                const Duration(seconds: 5),
-                onTimeout: (sink) {
-                  sink.addError(
-                    TimeoutException('connection timeout'),
-                  );
-                },
-              ),
+              () => _bleDeviceService.connect(event.device),
               (error, stackTrace) => Rx.timer<void>(
                 null,
                 const Duration(seconds: 1),
@@ -110,7 +103,7 @@ class BleDevicesBloc extends StreamBloc<BleDevicesEvent, BleDevicesState>
             add(event);
           },
           disconnect: (_) async* {
-            connectionStateSubscription?.cancel();
+            await connectionStateSubscription?.cancel();
             connectionStateSubscription = null;
             yield BleDevicesState(
               devises: connectingState.devises,

@@ -31,18 +31,17 @@ class BleDeviceService {
         ),
       );
 
-  Stream<DeviceConnectionState> connect(Device device) async* {
-    await for (final state in _flutterReactiveBle.connectToDevice(
+  Stream<DeviceConnectionState> connect(Device device) {
+    return _flutterReactiveBle
+        .connectToDevice(
       id: device.id,
-      connectionTimeout: const Duration(seconds: 2),
-    )) {
+    )
+        .map((state) {
       if (state.connectionState == ble.DeviceConnectionState.connected) {
-        yield DeviceConnectionState.connected;
+        return DeviceConnectionState.connected;
       } else {
-         yield DeviceConnectionState.disconnected;
+        return DeviceConnectionState.disconnected;
       }
-    }
-
-    throw 'done';
+    });
   }
 }

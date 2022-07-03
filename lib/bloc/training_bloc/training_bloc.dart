@@ -42,7 +42,8 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
         orElse: () {},
       );
     });
-    listenToStream<HrState>(hrStream, (hrState) {
+    listenToStream<HrState>(hrStream.debounceTime(const Duration(seconds: 3)),
+        (hrState) {
       hrState.maybeMap(
         actual: (actualState) {
           add(TrainingEvent.hrUpdate(actualState.hr));
@@ -54,8 +55,17 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
 
   @override
   Stream<TrainingState> mapEventToStates(TrainingEvent event) => state.map(
-        stopped: (value) => event.maybeMap(
-          start: (value) async* {
+        stopped: (_) => event.maybeMap(
+          reload: (_) async* {
+            final lastTraining = await _trainingRepository.getLastTraining();
+            if (lastTraining != null) {
+              _blocEventBus.add(const GeoEvent.start());
+              yield TrainingState.inProgress(
+                lastTraining,
+              );
+            }
+          },
+          start: (_) async* {
             _blocEventBus.add(const GeoEvent.start());
             yield TrainingState.inProgress(
               await _trainingRepository.createTraining(),

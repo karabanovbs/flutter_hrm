@@ -4,15 +4,11 @@ import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_bloc.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_event.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
 import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
-import 'package:flutter_hrm/bloc/geo_bloc/geo_event.dart';
-import 'package:flutter_hrm/bloc/hr_bloc/hr_bloc.dart';
 import 'package:flutter_hrm/bloc/training_bloc/training_bloc.dart';
-import 'package:flutter_hrm/bloc/training_bloc/training_event.dart';
 import 'package:flutter_hrm/screens/device_scanning.dart';
-import 'package:flutter_hrm/ui/bl_widgets/current_hr.dart';
-import 'package:flutter_hrm/ui/bl_widgets/current_pos.dart';
+import 'package:flutter_hrm/ui/bl_widgets/current_trainning_map.dart';
 import 'package:flutter_hrm/ui/bl_widgets/device_widget.dart';
-import 'package:flutter_hrm/ui/bl_widgets/hr_zone_indicator.dart';
+import 'package:flutter_hrm/ui/bl_widgets/training_statistic.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -20,31 +16,46 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            DeviceWidget(
-              onConnectTap: () {
-                context
-                    .read<BlocEventBus>()
-                    .add(const BleDevicesEvent.startScan());
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const DeviceScanning(),
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Expanded(
+                  child: Row(
+                children: [
+                  Expanded(
+                    child: DeviceWidget(
+                      maxHr: 193,
+                      onConnectTap: () {
+                        context
+                            .read<BlocEventBus>()
+                            .add(const BleDevicesEvent.startScan());
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const DeviceScanning(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
-                );
-              },
-            ),
-            const CurrentHr(),
-            const CurrentPos(),
-            const Expanded(
-              child: HrZoneIndicator(
-                maxHr: 193,
+                  const Expanded(
+                    child: TrainingStatistic(),
+                  ),
+                ],
+              )),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  children: const [
+                    Expanded(
+                      child: CurrentTrainingMap(),
+                    ),
+                  ],
+                ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: BlocBuilder<BleDevicesBloc, BleDevicesState>(

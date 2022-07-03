@@ -50,7 +50,7 @@ class BlocProviders extends StatelessWidget {
               TrainingRepository(),
               context.read<GeoBloc>().stream.shareValue(),
               context.read<HrBloc>().stream.shareValue(),
-            ),
+            )..add(const TrainingEvent.reload()),
           )
         ],
         child: child,
