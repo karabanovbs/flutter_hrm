@@ -5,6 +5,7 @@ import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_bloc.dart';
 import 'package:flutter_hrm/bloc/hr_bloc/hr_bloc.dart';
 import 'package:flutter_hrm/bloc/training_bloc/training_bloc.dart';
+import 'package:flutter_hrm/bloc/training_statistic_bloc/training_statistic_bloc.dart';
 import 'package:flutter_hrm/services/ble_device_service/ble_device_service.dart';
 import 'package:flutter_hrm/services/hrm_service/hrm_service.dart';
 import 'package:flutter_hrm/services/training_repository/training_repository.dart';
@@ -51,7 +52,13 @@ class BlocProviders extends StatelessWidget {
               context.read<GeoBloc>().stream.shareValue(),
               context.read<HrBloc>().stream.shareValue(),
             )..add(const TrainingEvent.reload()),
-          )
+          ),
+          BlocProvider(
+            create: (context) => TrainingStatisticBloc(
+              context.read<BlocEventBus>(),
+              context.read<GeoBloc>().stream,
+            ),
+          ),
         ],
         child: child,
       ),

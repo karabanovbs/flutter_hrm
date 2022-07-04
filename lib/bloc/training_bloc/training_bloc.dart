@@ -1,15 +1,15 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_event.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_state.dart';
 import 'package:flutter_hrm/bloc/hr_bloc/hr_state.dart';
 import 'package:flutter_hrm/domain/hr_point.dart';
-import 'package:flutter_hrm/domain/training_point.dart';
 import 'package:flutter_hrm/services/training_repository/training_repository.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stream_bloc/stream_bloc.dart';
+import 'package:wakelock/wakelock.dart';
+
 import 'training_event.dart';
 import 'training_state.dart';
 
@@ -67,6 +67,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
           },
           start: (_) async* {
             _blocEventBus.add(const GeoEvent.start());
+            Wakelock.enable();
             yield TrainingState.inProgress(
               await _trainingRepository.createTraining(),
             );
@@ -77,6 +78,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
           stop: (_) async* {
             await _trainingRepository.stopTraining(inProgressState.training);
             _blocEventBus.add(const GeoEvent.stop());
+            Wakelock.disable();
             yield const TrainingState.stopped();
           },
           geoUpdate: (event) async* {

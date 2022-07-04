@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'hr_point.freezed.dart';
-
 part 'hr_point.g.dart';
 
 @freezed

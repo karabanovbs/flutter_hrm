@@ -1,13 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
-import 'package:flutter_hrm/services/ble_device_service/ble_device_service.dart';
 import 'package:flutter_hrm/services/hrm_service/hrm_service.dart';
-import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stream_bloc/stream_bloc.dart';
 
-import '../../constants.dart';
 import '../bloc_event_bus.dart';
 import 'hr_event.dart';
 import 'hr_state.dart';

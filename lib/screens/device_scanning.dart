@@ -4,7 +4,6 @@ import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_bloc.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_event.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
 import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
-import 'package:flutter_hrm/bloc/hr_bloc/hr_bloc.dart';
 import 'package:flutter_hrm/ui/widgets/animations/infinite_rotation.dart';
 
 class DeviceScanning extends StatelessWidget {

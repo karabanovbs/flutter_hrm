@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_hrm/domain/training_point.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:stream_bloc/stream_bloc.dart';
+
 import '../bloc_event_bus.dart';
 import 'geo_event.dart';
 import 'geo_state.dart';

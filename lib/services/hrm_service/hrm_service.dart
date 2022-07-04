@@ -1,6 +1,5 @@
 import 'package:flutter_hrm/domain/device.dart';
 import 'package:flutter_reactive_ble/flutter_reactive_ble.dart';
-import 'package:rxdart/rxdart.dart';
 
 import '../../constants.dart';
 

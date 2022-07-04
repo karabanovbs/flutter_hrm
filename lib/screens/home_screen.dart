@@ -39,8 +39,15 @@ class HomeScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  const Expanded(
-                    child: TrainingStatistic(),
+                  Expanded(
+                    child: BlocBuilder<TrainingBloc, TrainingState>(
+                      builder: (context, state) {
+                        return state.map(
+                          stopped: (value) => const SizedBox.shrink(),
+                          inProgress: (_) => const TrainingStatistic(),
+                        );
+                      },
+                    ),
                   ),
                 ],
               )),

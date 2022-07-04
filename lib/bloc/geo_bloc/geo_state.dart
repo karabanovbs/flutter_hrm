@@ -1,6 +1,5 @@
 import 'package:flutter_hrm/domain/training_point.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:geolocator/geolocator.dart';
 
 part 'geo_state.freezed.dart';
 

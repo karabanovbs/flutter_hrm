@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_bloc.dart';
+import 'package:flutter_hrm/services/fhr_tile_provider/fhr_tile_provider.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 
@@ -49,11 +50,13 @@ class _CurrentTrainingMapState extends State<CurrentTrainingMap> {
           mapController: _mapController,
           options: MapOptions(
             zoom: 13.0,
+            maxZoom: 18,
           ),
           layers: [
             TileLayerOptions(
+              tileProvider: const FhrTileProvider(),
               urlTemplate:
-                  "https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png",
+                  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c'],
             ),
             MarkerLayerOptions(
