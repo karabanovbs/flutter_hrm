@@ -6,6 +6,7 @@ import 'package:flutter_hrm/bloc/geo_bloc/geo_state.dart';
 import 'package:flutter_hrm/bloc/hr_bloc/hr_state.dart';
 import 'package:flutter_hrm/domain/hr_point.dart';
 import 'package:flutter_hrm/services/training_repository/training_repository.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:stream_bloc/stream_bloc.dart';
 import 'package:wakelock/wakelock.dart';
@@ -22,6 +23,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
   final TrainingRepository _trainingRepository;
   final ValueStream<GeoState> geoStream;
   final ValueStream<HrState> hrStream;
+  FlutterTts flutterTts = FlutterTts();
 
   TrainingBloc(
     this._blocEventBus,
@@ -42,7 +44,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
         orElse: () {},
       );
     });
-    listenToStream<HrState>(hrStream.debounceTime(const Duration(seconds: 3)),
+    listenToStream<HrState>(hrStream.throttleTime(const Duration(seconds: 3)),
         (hrState) {
       hrState.maybeMap(
         actual: (actualState) {
@@ -68,6 +70,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
           start: (_) async* {
             _blocEventBus.add(const GeoEvent.start());
             Wakelock.enable();
+            await flutterTts.speak("Training start");
             yield TrainingState.inProgress(
               await _trainingRepository.createTraining(),
             );
@@ -79,6 +82,7 @@ class TrainingBloc extends StreamBloc<TrainingEvent, TrainingState>
             await _trainingRepository.stopTraining(inProgressState.training);
             _blocEventBus.add(const GeoEvent.stop());
             Wakelock.disable();
+            await flutterTts.speak("Training finish");
             yield const TrainingState.stopped();
           },
           geoUpdate: (event) async* {

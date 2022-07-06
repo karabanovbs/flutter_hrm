@@ -9,6 +9,7 @@ import 'package:flutter_hrm/screens/device_scanning.dart';
 import 'package:flutter_hrm/ui/bl_widgets/current_trainning_map.dart';
 import 'package:flutter_hrm/ui/bl_widgets/device_widget.dart';
 import 'package:flutter_hrm/ui/bl_widgets/training_statistic.dart';
+import 'package:flutter_hrm/ui/widgets/long_tap_process/long_tap_process.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -83,15 +84,18 @@ class HomeScreen extends StatelessWidget {
                         Icons.play_arrow,
                       ),
                     ),
-                    inProgress: (_) => FloatingActionButton(
-                      onPressed: () {
+                    inProgress: (_) => LongTapProcess(
+                      onFinish: () {
                         context
                             .read<BlocEventBus>()
                             .add(const TrainingEvent.stop());
                       },
-                      backgroundColor: Colors.red,
-                      child: const Icon(
-                        Icons.stop,
+                      child: FloatingActionButton(
+                        onPressed: () {},
+                        backgroundColor: Colors.red,
+                        child: const Icon(
+                          Icons.stop,
+                        ),
                       ),
                     ),
                   );

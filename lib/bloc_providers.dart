@@ -38,6 +38,7 @@ class BlocProviders extends StatelessWidget {
               context.read<BlocEventBus>(),
               context.read<BleDevicesBloc>().stream,
               HrmService(),
+              193,
             ),
           ),
           BlocProvider(

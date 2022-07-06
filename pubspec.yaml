@@ -26,6 +26,7 @@ dependencies:
   shared_preferences: ^2.0.15
   wakelock: ^0.6.1+2
   cached_network_image: ^3.2.1
+  flutter_tts: ^3.5.0
 
 dev_dependencies:
   flutter_test:

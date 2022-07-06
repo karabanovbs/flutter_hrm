@@ -6,9 +6,20 @@ part 'hr_state.freezed.dart';
 class HrState with _$HrState {
   const factory HrState.unknown({
     @Default(double.nan) double hr,
+    @Default(Zone.unknown) Zone zone,
   }) = _HrStateUnknown;
 
   const factory HrState.actual({
     required double hr,
+    required Zone zone,
   }) = _HrState;
+}
+
+enum Zone {
+  unknown,
+  grey,
+  blue,
+  green,
+  orange,
+  red,
 }

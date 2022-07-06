@@ -4,34 +4,34 @@ import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_bloc.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
 import 'package:flutter_hrm/bloc/hr_bloc/hr_bloc.dart';
 import 'package:flutter_hrm/ui/widgets/animations/infinite_rotation.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class DeviceWidget extends StatelessWidget {
   final VoidCallback onConnectTap;
+  final FlutterTts flutterTts = FlutterTts();
 
   final double maxHr;
 
-  const DeviceWidget({
+  DeviceWidget({
     Key? key,
     required this.onConnectTap,
     required this.maxHr,
   }) : super(key: key);
 
-  Color _getColor(double hr) {
-    if (hr < maxHr * 0.6) {
-      return Colors.grey;
-    } else if (hr < maxHr * 0.7) {
-      return Colors.blue;
-    }
-    if (hr < maxHr * 0.8) {
-      return Colors.green;
-    }
-    if (hr < maxHr * 0.9) {
-      return Colors.orange;
-    }
-    if (hr > maxHr * 0.9) {
-      return Colors.red;
-    } else {
-      return Colors.transparent;
+  Color _getColor(Zone zone) {
+    switch (zone) {
+      case Zone.unknown:
+        return Colors.transparent;
+      case Zone.grey:
+        return Colors.grey;
+      case Zone.blue:
+        return Colors.blue;
+      case Zone.green:
+        return Colors.green;
+      case Zone.orange:
+        return Colors.orange;
+      case Zone.red:
+        return Colors.red;
     }
   }
 
@@ -40,7 +40,7 @@ class DeviceWidget extends StatelessWidget {
     return BlocBuilder<HrBloc, HrState>(
       builder: (context, hrState) {
         return Material(
-          color: _getColor(hrState.hr),
+          color: _getColor(hrState.zone),
           child: InkWell(
             onTap: onConnectTap,
             child: Center(
