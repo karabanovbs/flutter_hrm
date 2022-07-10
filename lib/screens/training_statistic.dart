@@ -18,8 +18,7 @@ class TrainingStatistic extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const AspectRatio(
-            aspectRatio: 1,
+          const Expanded(
             child: TrainingStatisticMap(),
           ),
           const Expanded(

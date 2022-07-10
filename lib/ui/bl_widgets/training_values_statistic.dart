@@ -14,6 +14,7 @@ class TrainingValuesStatistic extends StatelessWidget {
     return BlocBuilder<TrainingStatisticBloc, TrainingStatisticState>(
       builder: (context, state) {
         return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('${NumberFormat.compact().format(state.distance / 1000)} km'),
             Text('${NumberFormat.compact().format(state.speed / 1000 * 3600)} km/h'),

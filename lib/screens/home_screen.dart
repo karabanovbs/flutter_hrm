@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_bloc.dart';
@@ -26,21 +27,22 @@ class HomeScreen extends StatelessWidget {
               Expanded(
                   child: Row(
                 children: [
-                  Expanded(
-                    child: DeviceWidget(
-                      maxHr: 193,
-                      onConnectTap: () {
-                        context
-                            .read<BlocEventBus>()
-                            .add(const BleDevicesEvent.startScan());
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const DeviceScanning(),
-                          ),
-                        );
-                      },
+                  if (!kIsWeb)
+                    Expanded(
+                      child: DeviceWidget(
+                        maxHr: 193,
+                        onConnectTap: () {
+                          context
+                              .read<BlocEventBus>()
+                              .add(const BleDevicesEvent.startScan());
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => const DeviceScanning(),
+                            ),
+                          );
+                        },
+                      ),
                     ),
-                  ),
                   Expanded(
                     child: BlocBuilder<TrainingBloc, TrainingState>(
                       builder: (context, state) {
@@ -83,36 +85,37 @@ class HomeScreen extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              BlocBuilder<TrainingBloc, TrainingState>(
-                builder: (context, state) {
-                  return state.map(
-                    stopped: (_) => FloatingActionButton(
-                      onPressed: () {
-                        context
-                            .read<BlocEventBus>()
-                            .add(const TrainingEvent.start());
-                      },
-                      child: const Icon(
-                        Icons.play_arrow,
-                      ),
-                    ),
-                    inProgress: (_) => LongTapProcess(
-                      onFinish: () {
-                        context
-                            .read<BlocEventBus>()
-                            .add(const TrainingEvent.stop());
-                      },
-                      child: FloatingActionButton(
-                        onPressed: () {},
-                        backgroundColor: Colors.red,
+              if (!kIsWeb)
+                BlocBuilder<TrainingBloc, TrainingState>(
+                  builder: (context, state) {
+                    return state.map(
+                      stopped: (_) => FloatingActionButton(
+                        onPressed: () {
+                          context
+                              .read<BlocEventBus>()
+                              .add(const TrainingEvent.start());
+                        },
                         child: const Icon(
-                          Icons.stop,
+                          Icons.play_arrow,
                         ),
                       ),
-                    ),
-                  );
-                },
-              ),
+                      inProgress: (_) => LongTapProcess(
+                        onFinish: () {
+                          context
+                              .read<BlocEventBus>()
+                              .add(const TrainingEvent.stop());
+                        },
+                        child: FloatingActionButton(
+                          onPressed: () {},
+                          backgroundColor: Colors.red,
+                          child: const Icon(
+                            Icons.stop,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
             ],
           );
         },
