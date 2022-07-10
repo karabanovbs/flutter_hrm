@@ -1,6 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_bloc.dart';
+import 'package:flutter_hrm/bloc/training_statistic/training_statistic_state.dart';
 import 'package:flutter_hrm/services/fhr_tile_provider/fhr_tile_provider.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -15,6 +18,7 @@ class CurrentTrainingMap extends StatefulWidget {
 class _CurrentTrainingMapState extends State<CurrentTrainingMap> {
   late MapController _mapController;
   late GeoBloc _geoBloc;
+  late StreamSubscription<GeoState> _streamSubscription;
 
   @override
   void initState() {
@@ -23,7 +27,7 @@ class _CurrentTrainingMapState extends State<CurrentTrainingMap> {
     _mapController = MapController();
     _geoBloc = context.read<GeoBloc>();
 
-    _geoBloc.stream.listen((state) {
+    _streamSubscription = _geoBloc.stream.listen((state) {
       state.map(
           unknown: (_) {},
           actual: (state) {
@@ -35,6 +39,12 @@ class _CurrentTrainingMapState extends State<CurrentTrainingMap> {
             );
           });
     });
+  }
+
+  @override
+  void dispose() {
+    _streamSubscription.cancel();
+    super.dispose();
   }
 
   @override
@@ -55,8 +65,7 @@ class _CurrentTrainingMapState extends State<CurrentTrainingMap> {
           layers: [
             TileLayerOptions(
               tileProvider: const FhrTileProvider(),
-              urlTemplate:
-                  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              urlTemplate: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
               subdomains: ['a', 'b', 'c'],
             ),
             MarkerLayerOptions(

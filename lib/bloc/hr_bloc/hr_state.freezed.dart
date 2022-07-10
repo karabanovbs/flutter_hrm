@@ -17,23 +17,23 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$HrState {
   double get hr => throw _privateConstructorUsedError;
-  Zone get zone => throw _privateConstructorUsedError;
+  HrZone get zone => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double hr, Zone zone) unknown,
-    required TResult Function(double hr, Zone zone) actual,
+    required TResult Function(double hr, HrZone zone) unknown,
+    required TResult Function(double hr, HrZone zone) actual,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -65,7 +65,7 @@ mixin _$HrState {
 abstract class $HrStateCopyWith<$Res> {
   factory $HrStateCopyWith(HrState value, $Res Function(HrState) then) =
       _$HrStateCopyWithImpl<$Res>;
-  $Res call({double hr, Zone zone});
+  $Res call({double hr, HrZone zone});
 }
 
 /// @nodoc
@@ -89,7 +89,7 @@ class _$HrStateCopyWithImpl<$Res> implements $HrStateCopyWith<$Res> {
       zone: zone == freezed
           ? _value.zone
           : zone // ignore: cast_nullable_to_non_nullable
-              as Zone,
+              as HrZone,
     ));
   }
 }
@@ -101,7 +101,7 @@ abstract class _$$_HrStateUnknownCopyWith<$Res>
           _$_HrStateUnknown value, $Res Function(_$_HrStateUnknown) then) =
       __$$_HrStateUnknownCopyWithImpl<$Res>;
   @override
-  $Res call({double hr, Zone zone});
+  $Res call({double hr, HrZone zone});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$$_HrStateUnknownCopyWithImpl<$Res> extends _$HrStateCopyWithImpl<$Res>
       zone: zone == freezed
           ? _value.zone
           : zone // ignore: cast_nullable_to_non_nullable
-              as Zone,
+              as HrZone,
     ));
   }
 }
@@ -135,14 +135,14 @@ class __$$_HrStateUnknownCopyWithImpl<$Res> extends _$HrStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_HrStateUnknown implements _HrStateUnknown {
-  const _$_HrStateUnknown({this.hr = double.nan, this.zone = Zone.unknown});
+  const _$_HrStateUnknown({this.hr = double.nan, this.zone = HrZone.unknown});
 
   @override
   @JsonKey()
   final double hr;
   @override
   @JsonKey()
-  final Zone zone;
+  final HrZone zone;
 
   @override
   String toString() {
@@ -172,8 +172,8 @@ class _$_HrStateUnknown implements _HrStateUnknown {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double hr, Zone zone) unknown,
-    required TResult Function(double hr, Zone zone) actual,
+    required TResult Function(double hr, HrZone zone) unknown,
+    required TResult Function(double hr, HrZone zone) actual,
   }) {
     return unknown(hr, zone);
   }
@@ -181,8 +181,8 @@ class _$_HrStateUnknown implements _HrStateUnknown {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
   }) {
     return unknown?.call(hr, zone);
   }
@@ -190,8 +190,8 @@ class _$_HrStateUnknown implements _HrStateUnknown {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
     required TResult orElse(),
   }) {
     if (unknown != null) {
@@ -233,13 +233,13 @@ class _$_HrStateUnknown implements _HrStateUnknown {
 }
 
 abstract class _HrStateUnknown implements HrState {
-  const factory _HrStateUnknown({final double hr, final Zone zone}) =
+  const factory _HrStateUnknown({final double hr, final HrZone zone}) =
       _$_HrStateUnknown;
 
   @override
   double get hr => throw _privateConstructorUsedError;
   @override
-  Zone get zone => throw _privateConstructorUsedError;
+  HrZone get zone => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_HrStateUnknownCopyWith<_$_HrStateUnknown> get copyWith =>
@@ -252,7 +252,7 @@ abstract class _$$_HrStateCopyWith<$Res> implements $HrStateCopyWith<$Res> {
           _$_HrState value, $Res Function(_$_HrState) then) =
       __$$_HrStateCopyWithImpl<$Res>;
   @override
-  $Res call({double hr, Zone zone});
+  $Res call({double hr, HrZone zone});
 }
 
 /// @nodoc
@@ -277,7 +277,7 @@ class __$$_HrStateCopyWithImpl<$Res> extends _$HrStateCopyWithImpl<$Res>
       zone: zone == freezed
           ? _value.zone
           : zone // ignore: cast_nullable_to_non_nullable
-              as Zone,
+              as HrZone,
     ));
   }
 }
@@ -290,7 +290,7 @@ class _$_HrState implements _HrState {
   @override
   final double hr;
   @override
-  final Zone zone;
+  final HrZone zone;
 
   @override
   String toString() {
@@ -320,8 +320,8 @@ class _$_HrState implements _HrState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(double hr, Zone zone) unknown,
-    required TResult Function(double hr, Zone zone) actual,
+    required TResult Function(double hr, HrZone zone) unknown,
+    required TResult Function(double hr, HrZone zone) actual,
   }) {
     return actual(hr, zone);
   }
@@ -329,8 +329,8 @@ class _$_HrState implements _HrState {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
   }) {
     return actual?.call(hr, zone);
   }
@@ -338,8 +338,8 @@ class _$_HrState implements _HrState {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(double hr, Zone zone)? unknown,
-    TResult Function(double hr, Zone zone)? actual,
+    TResult Function(double hr, HrZone zone)? unknown,
+    TResult Function(double hr, HrZone zone)? actual,
     required TResult orElse(),
   }) {
     if (actual != null) {
@@ -381,13 +381,13 @@ class _$_HrState implements _HrState {
 }
 
 abstract class _HrState implements HrState {
-  const factory _HrState({required final double hr, required final Zone zone}) =
-      _$_HrState;
+  const factory _HrState(
+      {required final double hr, required final HrZone zone}) = _$_HrState;
 
   @override
   double get hr => throw _privateConstructorUsedError;
   @override
-  Zone get zone => throw _privateConstructorUsedError;
+  HrZone get zone => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_HrStateCopyWith<_$_HrState> get copyWith =>

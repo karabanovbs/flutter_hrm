@@ -25,7 +25,7 @@ mixin _$TrainingPoint {
   String? get id => throw _privateConstructorUsedError;
   double get longitude => throw _privateConstructorUsedError;
   double get latitude => throw _privateConstructorUsedError;
-  DateTime? get timestamp => throw _privateConstructorUsedError;
+  DateTime get timestamp => throw _privateConstructorUsedError;
   double get accuracy => throw _privateConstructorUsedError;
   double get altitude => throw _privateConstructorUsedError;
   double get heading => throw _privateConstructorUsedError;
@@ -48,7 +48,7 @@ abstract class $TrainingPointCopyWith<$Res> {
       {@JsonKey(includeIfNull: false) String? id,
       double longitude,
       double latitude,
-      DateTime? timestamp,
+      DateTime timestamp,
       double accuracy,
       double altitude,
       double heading,
@@ -95,7 +95,7 @@ class _$TrainingPointCopyWithImpl<$Res>
       timestamp: timestamp == freezed
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       accuracy: accuracy == freezed
           ? _value.accuracy
           : accuracy // ignore: cast_nullable_to_non_nullable
@@ -135,7 +135,7 @@ abstract class _$$_TrainingPointCopyWith<$Res>
       {@JsonKey(includeIfNull: false) String? id,
       double longitude,
       double latitude,
-      DateTime? timestamp,
+      DateTime timestamp,
       double accuracy,
       double altitude,
       double heading,
@@ -184,7 +184,7 @@ class __$$_TrainingPointCopyWithImpl<$Res>
       timestamp: timestamp == freezed
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as DateTime,
       accuracy: accuracy == freezed
           ? _value.accuracy
           : accuracy // ignore: cast_nullable_to_non_nullable
@@ -220,7 +220,7 @@ class _$_TrainingPoint implements _TrainingPoint {
       {@JsonKey(includeIfNull: false) this.id,
       required this.longitude,
       required this.latitude,
-      this.timestamp,
+      required this.timestamp,
       required this.accuracy,
       required this.altitude,
       required this.heading,
@@ -240,7 +240,7 @@ class _$_TrainingPoint implements _TrainingPoint {
   @override
   final double latitude;
   @override
-  final DateTime? timestamp;
+  final DateTime timestamp;
   @override
   final double accuracy;
   @override
@@ -308,7 +308,7 @@ abstract class _TrainingPoint implements TrainingPoint {
       {@JsonKey(includeIfNull: false) final String? id,
       required final double longitude,
       required final double latitude,
-      final DateTime? timestamp,
+      required final DateTime timestamp,
       required final double accuracy,
       required final double altitude,
       required final double heading,
@@ -327,7 +327,7 @@ abstract class _TrainingPoint implements TrainingPoint {
   @override
   double get latitude => throw _privateConstructorUsedError;
   @override
-  DateTime? get timestamp => throw _privateConstructorUsedError;
+  DateTime get timestamp => throw _privateConstructorUsedError;
   @override
   double get accuracy => throw _privateConstructorUsedError;
   @override

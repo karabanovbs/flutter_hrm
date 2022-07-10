@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'training_statistic_event.dart';
+part of 'real_time_training_statistic_event.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TrainingStatisticEvent {
+mixin _$RealTimeTrainingStatisticEvent {
   double get speed => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -52,26 +52,27 @@ mixin _$TrainingStatisticEvent {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TrainingStatisticEventCopyWith<TrainingStatisticEvent> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RealTimeTrainingStatisticEventCopyWith<RealTimeTrainingStatisticEvent>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrainingStatisticEventCopyWith<$Res> {
-  factory $TrainingStatisticEventCopyWith(TrainingStatisticEvent value,
-          $Res Function(TrainingStatisticEvent) then) =
-      _$TrainingStatisticEventCopyWithImpl<$Res>;
+abstract class $RealTimeTrainingStatisticEventCopyWith<$Res> {
+  factory $RealTimeTrainingStatisticEventCopyWith(
+          RealTimeTrainingStatisticEvent value,
+          $Res Function(RealTimeTrainingStatisticEvent) then) =
+      _$RealTimeTrainingStatisticEventCopyWithImpl<$Res>;
   $Res call({double speed});
 }
 
 /// @nodoc
-class _$TrainingStatisticEventCopyWithImpl<$Res>
-    implements $TrainingStatisticEventCopyWith<$Res> {
-  _$TrainingStatisticEventCopyWithImpl(this._value, this._then);
+class _$RealTimeTrainingStatisticEventCopyWithImpl<$Res>
+    implements $RealTimeTrainingStatisticEventCopyWith<$Res> {
+  _$RealTimeTrainingStatisticEventCopyWithImpl(this._value, this._then);
 
-  final TrainingStatisticEvent _value;
+  final RealTimeTrainingStatisticEvent _value;
   // ignore: unused_field
-  final $Res Function(TrainingStatisticEvent) _then;
+  final $Res Function(RealTimeTrainingStatisticEvent) _then;
 
   @override
   $Res call({
@@ -88,7 +89,7 @@ class _$TrainingStatisticEventCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$$_TrainingStatisticSpeedChangedEventCopyWith<$Res>
-    implements $TrainingStatisticEventCopyWith<$Res> {
+    implements $RealTimeTrainingStatisticEventCopyWith<$Res> {
   factory _$$_TrainingStatisticSpeedChangedEventCopyWith(
           _$_TrainingStatisticSpeedChangedEvent value,
           $Res Function(_$_TrainingStatisticSpeedChangedEvent) then) =
@@ -99,7 +100,7 @@ abstract class _$$_TrainingStatisticSpeedChangedEventCopyWith<$Res>
 
 /// @nodoc
 class __$$_TrainingStatisticSpeedChangedEventCopyWithImpl<$Res>
-    extends _$TrainingStatisticEventCopyWithImpl<$Res>
+    extends _$RealTimeTrainingStatisticEventCopyWithImpl<$Res>
     implements _$$_TrainingStatisticSpeedChangedEventCopyWith<$Res> {
   __$$_TrainingStatisticSpeedChangedEventCopyWithImpl(
       _$_TrainingStatisticSpeedChangedEvent _value,
@@ -134,7 +135,7 @@ class _$_TrainingStatisticSpeedChangedEvent
 
   @override
   String toString() {
-    return 'TrainingStatisticEvent.speedChanged(speed: $speed)';
+    return 'RealTimeTrainingStatisticEvent.speedChanged(speed: $speed)';
   }
 
   @override
@@ -215,7 +216,7 @@ class _$_TrainingStatisticSpeedChangedEvent
 }
 
 abstract class _TrainingStatisticSpeedChangedEvent
-    implements TrainingStatisticEvent {
+    implements RealTimeTrainingStatisticEvent {
   const factory _TrainingStatisticSpeedChangedEvent(final double speed) =
       _$_TrainingStatisticSpeedChangedEvent;
 

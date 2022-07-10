@@ -4,6 +4,6 @@ part 'training_statistic_event.freezed.dart';
 
 @freezed
 class TrainingStatisticEvent with _$TrainingStatisticEvent {
-  const factory TrainingStatisticEvent.speedChanged(double speed) =
-      _TrainingStatisticSpeedChangedEvent;
+  const factory TrainingStatisticEvent.prepareStatistic() =
+      _TrainingStatisticPrepareStatisticEvent;
 }

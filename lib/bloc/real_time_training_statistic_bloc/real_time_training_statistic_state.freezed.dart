@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'training_statistic_state.dart';
+part of 'real_time_training_statistic_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,30 +15,31 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$TrainingStatisticState {
+mixin _$RealTimeTrainingStatisticState {
   int get speed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $TrainingStatisticStateCopyWith<TrainingStatisticState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $RealTimeTrainingStatisticStateCopyWith<RealTimeTrainingStatisticState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TrainingStatisticStateCopyWith<$Res> {
-  factory $TrainingStatisticStateCopyWith(TrainingStatisticState value,
-          $Res Function(TrainingStatisticState) then) =
-      _$TrainingStatisticStateCopyWithImpl<$Res>;
+abstract class $RealTimeTrainingStatisticStateCopyWith<$Res> {
+  factory $RealTimeTrainingStatisticStateCopyWith(
+          RealTimeTrainingStatisticState value,
+          $Res Function(RealTimeTrainingStatisticState) then) =
+      _$RealTimeTrainingStatisticStateCopyWithImpl<$Res>;
   $Res call({int speed});
 }
 
 /// @nodoc
-class _$TrainingStatisticStateCopyWithImpl<$Res>
-    implements $TrainingStatisticStateCopyWith<$Res> {
-  _$TrainingStatisticStateCopyWithImpl(this._value, this._then);
+class _$RealTimeTrainingStatisticStateCopyWithImpl<$Res>
+    implements $RealTimeTrainingStatisticStateCopyWith<$Res> {
+  _$RealTimeTrainingStatisticStateCopyWithImpl(this._value, this._then);
 
-  final TrainingStatisticState _value;
+  final RealTimeTrainingStatisticState _value;
   // ignore: unused_field
-  final $Res Function(TrainingStatisticState) _then;
+  final $Res Function(RealTimeTrainingStatisticState) _then;
 
   @override
   $Res call({
@@ -55,7 +56,7 @@ class _$TrainingStatisticStateCopyWithImpl<$Res>
 
 /// @nodoc
 abstract class _$$_TrainingStatisticStateCopyWith<$Res>
-    implements $TrainingStatisticStateCopyWith<$Res> {
+    implements $RealTimeTrainingStatisticStateCopyWith<$Res> {
   factory _$$_TrainingStatisticStateCopyWith(_$_TrainingStatisticState value,
           $Res Function(_$_TrainingStatisticState) then) =
       __$$_TrainingStatisticStateCopyWithImpl<$Res>;
@@ -65,7 +66,7 @@ abstract class _$$_TrainingStatisticStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_TrainingStatisticStateCopyWithImpl<$Res>
-    extends _$TrainingStatisticStateCopyWithImpl<$Res>
+    extends _$RealTimeTrainingStatisticStateCopyWithImpl<$Res>
     implements _$$_TrainingStatisticStateCopyWith<$Res> {
   __$$_TrainingStatisticStateCopyWithImpl(_$_TrainingStatisticState _value,
       $Res Function(_$_TrainingStatisticState) _then)
@@ -99,7 +100,7 @@ class _$_TrainingStatisticState implements _TrainingStatisticState {
 
   @override
   String toString() {
-    return 'TrainingStatisticState(speed: $speed)';
+    return 'RealTimeTrainingStatisticState(speed: $speed)';
   }
 
   @override
@@ -121,7 +122,8 @@ class _$_TrainingStatisticState implements _TrainingStatisticState {
           this, _$identity);
 }
 
-abstract class _TrainingStatisticState implements TrainingStatisticState {
+abstract class _TrainingStatisticState
+    implements RealTimeTrainingStatisticState {
   const factory _TrainingStatisticState({final int speed}) =
       _$_TrainingStatisticState;
 

@@ -1,3 +1,4 @@
+import 'package:flutter_hrm/domain/hr_zone.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'hr_state.freezed.dart';
@@ -6,20 +7,12 @@ part 'hr_state.freezed.dart';
 class HrState with _$HrState {
   const factory HrState.unknown({
     @Default(double.nan) double hr,
-    @Default(Zone.unknown) Zone zone,
+    @Default(HrZone.unknown) HrZone zone,
   }) = _HrStateUnknown;
 
   const factory HrState.actual({
     required double hr,
-    required Zone zone,
+    required HrZone zone,
   }) = _HrState;
 }
 
-enum Zone {
-  unknown,
-  grey,
-  blue,
-  green,
-  orange,
-  red,
-}

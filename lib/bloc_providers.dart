@@ -5,7 +5,8 @@ import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
 import 'package:flutter_hrm/bloc/geo_bloc/geo_bloc.dart';
 import 'package:flutter_hrm/bloc/hr_bloc/hr_bloc.dart';
 import 'package:flutter_hrm/bloc/training_bloc/training_bloc.dart';
-import 'package:flutter_hrm/bloc/training_statistic_bloc/training_statistic_bloc.dart';
+import 'package:flutter_hrm/bloc/real_time_training_statistic_bloc/real_time_training_statistic_bloc.dart';
+import 'package:flutter_hrm/bloc/trainings_list_bloc/trainings_list_bloc.dart';
 import 'package:flutter_hrm/services/ble_device_service/ble_device_service.dart';
 import 'package:flutter_hrm/services/hrm_service/hrm_service.dart';
 import 'package:flutter_hrm/services/training_repository/training_repository.dart';
@@ -55,10 +56,16 @@ class BlocProviders extends StatelessWidget {
             )..add(const TrainingEvent.reload()),
           ),
           BlocProvider(
-            create: (context) => TrainingStatisticBloc(
+            create: (context) => RealTimeTrainingStatisticBloc(
               context.read<BlocEventBus>(),
               context.read<GeoBloc>().stream,
             ),
+          ),
+          BlocProvider(
+            create: (context) => TrainingsListBloc(
+              context.read<BlocEventBus>(),
+              TrainingRepository(),
+            )..add(const TrainingsListEvent.loadMode()),
           ),
         ],
         child: child,

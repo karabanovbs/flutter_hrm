@@ -13,7 +13,7 @@ class TrainingPoint with _$TrainingPoint {
     String? id,
     required double longitude,
     required double latitude,
-    DateTime? timestamp,
+    required DateTime timestamp,
     required double accuracy,
     required double altitude,
     required double heading,

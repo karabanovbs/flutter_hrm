@@ -35,7 +35,7 @@ class GeoBloc extends StreamBloc<GeoEvent, GeoState> with BlocLifecycleMixin {
               position: TrainingPoint(
                 longitude: event.position.longitude,
                 latitude: event.position.latitude,
-                timestamp: event.position.timestamp,
+                timestamp: event.position.timestamp ?? DateTime.now().toUtc(),
                 accuracy: event.position.accuracy,
                 altitude: event.position.altitude,
                 heading: event.position.heading,
@@ -58,7 +58,7 @@ class GeoBloc extends StreamBloc<GeoEvent, GeoState> with BlocLifecycleMixin {
               position: TrainingPoint(
                 longitude: event.position.longitude,
                 latitude: event.position.latitude,
-                timestamp: event.position.timestamp,
+                timestamp: event.position.timestamp ?? DateTime.now().toUtc(),
                 accuracy: event.position.accuracy,
                 altitude: event.position.altitude,
                 heading: event.position.heading,

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
+import 'package:flutter_hrm/domain/hr_zone.dart';
 import 'package:flutter_hrm/services/hrm_service/hrm_service.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:rxdart/rxdart.dart';
@@ -21,22 +22,6 @@ class HrBloc extends StreamBloc<HrEvent, HrState> with BlocLifecycleMixin {
   FlutterTts flutterTts = FlutterTts();
 
   StreamSubscription<double>? _hrSubscription;
-
-  Zone _getZone(double hr) {
-    if (hr < maxHr * 0.6) {
-      return Zone.grey;
-    } else if (hr < maxHr * 0.7) {
-      return Zone.blue;
-    } else if (hr < maxHr * 0.8) {
-      return Zone.green;
-    } else if (hr < maxHr * 0.9) {
-      return Zone.orange;
-    } else if (hr > maxHr * 0.9) {
-      return Zone.red;
-    } else {
-      return Zone.unknown;
-    }
-  }
 
   HrBloc(
     this._blocEventBus,
@@ -63,7 +48,7 @@ class HrBloc extends StreamBloc<HrEvent, HrState> with BlocLifecycleMixin {
       );
     });
 
-    listenToStream<Zone>(stream.map((event) => event.zone).distinct(), (zone) {
+    listenToStream<HrZone>(stream.map((event) => event.zone).distinct(), (zone) {
       flutterTts.speak(zone.toString());
     });
   }
@@ -74,7 +59,7 @@ class HrBloc extends StreamBloc<HrEvent, HrState> with BlocLifecycleMixin {
           update: (update) async* {
             yield HrState.actual(
               hr: update.hr,
-              zone: _getZone(update.hr),
+              zone: getZone(maxHr, update.hr),
             );
           },
           start: (startEvent) async* {
@@ -103,7 +88,7 @@ class HrBloc extends StreamBloc<HrEvent, HrState> with BlocLifecycleMixin {
           update: (update) async* {
             yield HrState.actual(
               hr: update.hr,
-              zone: _getZone(update.hr),
+              zone: getZone(maxHr, update.hr),
             );
           },
           stop: (_) async* {

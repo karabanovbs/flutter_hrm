@@ -95,4 +95,34 @@ class TrainingRepository {
     return ArgumentError.checkNotNull(
         (await (await _hrPoint(training.id).add(point)).get()).data());
   }
+
+  Future<Iterable<Training>> getTrainingsList(
+      {Training? after, int limit = 10}) async {
+    var query = _training.orderBy('started', descending: true).limit(limit);
+
+    if (after != null) {
+      query = query.startAfterDocument(await _training.doc(after.id).get());
+    }
+
+    return (await query.get()).docs.map((e) => e.data());
+  }
+
+  Future<Iterable<TrainingPoint>> getTrainingPointsList({
+    required Training training,
+    int limit = 10,
+  }) async {
+    var query =
+        _trainingPoint(training.id).orderBy('timestamp', descending: true);
+
+    return query.get().then((value) => value.docs.map((e) => e.data()));
+  }
+
+  Future<Iterable<HrPoint>> getTrainingHrPointsList({
+    required Training training,
+    int limit = 10,
+  }) async {
+    var query = _hrPoint(training.id).orderBy('timestamp', descending: true);
+
+    return query.get().then((value) => value.docs.map((e) => e.data()));
+  }
 }

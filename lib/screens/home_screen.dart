@@ -6,6 +6,7 @@ import 'package:flutter_hrm/bloc/ble_devices_bloc/ble_devices_state.dart';
 import 'package:flutter_hrm/bloc/bloc_event_bus.dart';
 import 'package:flutter_hrm/bloc/training_bloc/training_bloc.dart';
 import 'package:flutter_hrm/screens/device_scanning.dart';
+import 'package:flutter_hrm/screens/trainings.dart';
 import 'package:flutter_hrm/ui/bl_widgets/current_trainning_map.dart';
 import 'package:flutter_hrm/ui/bl_widgets/device_widget.dart';
 import 'package:flutter_hrm/ui/bl_widgets/training_statistic.dart';
@@ -44,7 +45,18 @@ class HomeScreen extends StatelessWidget {
                     child: BlocBuilder<TrainingBloc, TrainingState>(
                       builder: (context, state) {
                         return state.map(
-                          stopped: (value) => const SizedBox.shrink(),
+                          stopped: (value) => InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => const Trainings(),
+                                ),
+                              );
+                            },
+                            child: const Center(
+                              child: Text('Trainings'),
+                            ),
+                          ),
                           inProgress: (_) => const TrainingStatistic(),
                         );
                       },
